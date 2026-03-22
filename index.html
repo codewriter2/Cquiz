@@ -30,7 +30,7 @@
     min-height: 100vh;
     line-height: 1.6;
   }
-
+ 
   /* 배경 도트 패턴 */
   body::before {
     content: '';
@@ -42,7 +42,7 @@
     pointer-events: none;
     z-index: 0;
   }
-
+ 
   .container {
     max-width: 720px;
     margin: 0 auto;
@@ -50,7 +50,7 @@
     position: relative;
     z-index: 1;
   }
-
+ 
   /* 헤더 */
   .header {
     margin-bottom: 48px;
@@ -73,7 +73,7 @@
     font-size: 14px;
     color: var(--text2);
   }
-
+ 
   /* 단원 선택 */
   #screen-select { animation: fadeUp 0.5s ease both; }
   .section-label {
@@ -120,7 +120,7 @@
     transition: background 0.15s;
   }
   .unit-btn.selected .dot { background: var(--accent); }
-
+ 
   .start-btn {
     background: var(--accent);
     color: #ffffff;
@@ -137,7 +137,7 @@
   }
   .start-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
   .start-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
-
+ 
   /* 학번 입력 */
   .student-input-wrap {
     margin-bottom: 28px;
@@ -164,7 +164,7 @@
     transition: border-color 0.18s;
   }
   .text-input:focus { border-color: var(--accent2); }
-
+ 
   /* 퀴즈 화면 */
   #screen-quiz { display: none; }
   .progress-bar-wrap {
@@ -248,7 +248,7 @@
   .option-btn.correct { border-color: var(--accent) !important; color: var(--accent) !important; background: rgba(74,222,128,0.08) !important; }
   .option-btn.wrong { border-color: var(--danger) !important; color: var(--danger) !important; background: rgba(248,113,113,0.08) !important; }
   .option-btn:disabled { cursor: default; }
-
+ 
   .next-btn {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -269,7 +269,7 @@
     font-weight: 600;
   }
   .next-btn.primary:hover { background: #1d4ed8; }
-
+ 
   /* 결과 화면 */
   #screen-result { display: none; }
   .score-display {
@@ -357,7 +357,7 @@
   .review-ans { font-family: var(--mono); font-size: 12px; margin-top: 4px; }
   .review-ans .correct { color: var(--accent); }
   .review-ans .wrong-ans { color: var(--danger); }
-
+ 
   .notion-status {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -379,7 +379,7 @@
   }
   .notion-status.success .dot { background: var(--accent); animation: none; }
   .notion-status.error .dot { background: var(--danger); animation: none; }
-
+ 
   .retry-btn {
     background: transparent;
     border: 1px solid var(--border);
@@ -393,7 +393,7 @@
     width: 100%;
   }
   .retry-btn:hover { border-color: var(--accent2); color: var(--accent2); }
-
+ 
   /* 로딩 */
   #screen-loading { display: none; text-align: center; padding: 80px 0; }
   .loader {
@@ -404,7 +404,7 @@
     animation: spin 0.8s linear infinite;
     margin: 0 auto 16px;
   }
-
+ 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
@@ -423,7 +423,7 @@
     <h1>단원별 퀴즈</h1>
     <p>단원을 선택하고 학번을 입력한 후 퀴즈를 시작하세요.</p>
   </div>
-
+ 
   <!-- 단원 선택 화면 -->
   <div id="screen-select">
     <div class="student-input-wrap">
@@ -438,13 +438,13 @@
     <div class="unit-grid" id="unit-grid"></div>
     <button class="start-btn" id="start-btn" disabled onclick="startQuiz()">퀴즈 시작 →</button>
   </div>
-
+ 
   <!-- 로딩 -->
   <div id="screen-loading">
     <div class="loader"></div>
     <p style="color:var(--text3);font-family:var(--mono);font-size:13px;">문제를 불러오는 중...</p>
   </div>
-
+ 
   <!-- 퀴즈 화면 -->
   <div id="screen-quiz">
     <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
@@ -456,7 +456,7 @@
     <div class="options" id="options"></div>
     <button class="next-btn" id="next-btn" style="display:none" onclick="nextQuestion()">다음 문제 →</button>
   </div>
-
+ 
   <!-- 결과 화면 -->
   <div id="screen-result">
     <div class="score-display">
@@ -490,11 +490,11 @@
     <button class="retry-btn" onclick="resetQuiz()">← 다시 풀기</button>
   </div>
 </div>
-
+ 
 <script>
 const MAKE_WEBHOOK = 'https://hook.us2.make.com/wc9029vszisbdw39hninga5pf669s97k';
-
-
+ 
+ 
 // 문항 데이터 (내장)
 const ALL_QUESTIONS = [
   {q:'Q1. printf에서 double형 출력 형식 지정자는?',opts:['%d','%f','%lf','%g'],ans:3,unit:'변수와 자료형'},
@@ -568,9 +568,9 @@ const ALL_QUESTIONS = [
   {q:'Q69. 함수에 포인터를 전달하면 원본 변수를 수정할 수 있는가?',opts:['없다','있다','자료형에 따라 다르다','컴파일러에 따라 다르다'],ans:2,unit:'포인터'},
   {q:'Q70. void *p는 어떤 포인터인가?',opts:['아무것도 못 가리키는 포인터','어떤 자료형도 가리킬 수 있는 포인터','자동으로 초기화되는 포인터','전역에서만 쓰는 포인터'],ans:2,unit:'포인터'},
 ];
-
+ 
 const UNITS = [...new Set(ALL_QUESTIONS.map(q => q.unit))];
-
+ 
 let selectedUnit = null;
 let questions = [];
 let current = 0;
@@ -579,7 +579,7 @@ let answered = false;
 let wrongs = [];
 let studentId = '';
 let studentName = '';
-
+ 
 // 단원 버튼 생성
 function initUnits() {
   const grid = document.getElementById('unit-grid');
@@ -593,20 +593,20 @@ function initUnits() {
   document.getElementById('student-id').addEventListener('input', checkStart);
   document.getElementById('student-name').addEventListener('input', checkStart);
 }
-
+ 
 function selectUnit(unit, btn) {
   document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   selectedUnit = unit;
   checkStart();
 }
-
+ 
 function checkStart() {
   const id = document.getElementById('student-id').value.trim();
   const name = document.getElementById('student-name').value.trim();
   document.getElementById('start-btn').disabled = !(id && name && selectedUnit);
 }
-
+ 
 function startQuiz() {
   studentId = document.getElementById('student-id').value.trim();
   studentName = document.getElementById('student-name').value.trim();
@@ -615,7 +615,7 @@ function startQuiz() {
   show('quiz');
   renderQuestion();
 }
-
+ 
 function renderQuestion() {
   const q = questions[current];
   const total = questions.length;
@@ -624,7 +624,7 @@ function renderQuestion() {
   document.getElementById('q-unit-tag').textContent = q.unit;
   document.getElementById('question-text').textContent = q.q;
   answered = false;
-
+ 
   const opts = document.getElementById('options');
   opts.innerHTML = '';
   const nums = ['①','②','③','④'];
@@ -635,33 +635,33 @@ function renderQuestion() {
     btn.onclick = () => selectAnswer(i + 1, btn, q);
     opts.appendChild(btn);
   });
-
+ 
   document.getElementById('next-btn').style.display = 'none';
 }
-
+ 
 function selectAnswer(chosen, btn, q) {
   if (answered) return;
   answered = true;
   const allBtns = document.querySelectorAll('.option-btn');
   allBtns.forEach(b => b.disabled = true);
-
+ 
   const isCorrect = chosen === q.ans;
   btn.classList.add(isCorrect ? 'correct' : 'wrong');
   allBtns[q.ans - 1].classList.add('correct');
-
+ 
   if (isCorrect) {
     score++;
   } else {
     wrongs.push({ q: q.q, chosen: q.opts[chosen - 1], correct: q.opts[q.ans - 1] });
   }
-
+ 
   const nextBtn = document.getElementById('next-btn');
   nextBtn.style.display = 'block';
   const isLast = current === questions.length - 1;
   nextBtn.textContent = isLast ? '결과 보기 →' : '다음 문제 →';
   nextBtn.className = isLast ? 'next-btn primary' : 'next-btn';
 }
-
+ 
 function nextQuestion() {
   current++;
   if (current >= questions.length) {
@@ -670,7 +670,7 @@ function nextQuestion() {
     renderQuestion();
   }
 }
-
+ 
 function showResult() {
   show('result');
   const total = questions.length;
@@ -680,7 +680,7 @@ function showResult() {
   document.getElementById('stat-correct').textContent = score;
   document.getElementById('stat-wrong').textContent = total - score;
   document.getElementById('stat-rate').textContent = rate + '%';
-
+ 
   let title, sub;
   if (rate === 100) { title = '완벽해요! 🎉'; sub = '모든 문제를 맞혔습니다.'; }
   else if (rate >= 80) { title = '잘했어요! 👏'; sub = '조금만 더 복습하면 완벽합니다.'; }
@@ -688,7 +688,7 @@ function showResult() {
   else { title = '더 공부해봐요 📚'; sub = '오답 노트를 꼼꼼히 확인하세요.'; }
   document.getElementById('score-title').textContent = title;
   document.getElementById('score-sub').textContent = sub;
-
+ 
   const review = document.getElementById('review-list');
   review.innerHTML = '';
   if (wrongs.length === 0) {
@@ -709,14 +709,14 @@ function showResult() {
         </div>`;
     });
   }
-
+ 
   saveToNotion(rate, total);
 }
-
+ 
 async function saveToNotion(rate, total) {
   const statusEl = document.getElementById('notion-status');
   const statusText = document.getElementById('notion-status-text');
-
+ 
   try {
     const wrongNums = wrongs.map(w => w.q.split('.')[0]).join(', ') || '없음';
     const body = {
@@ -728,38 +728,39 @@ async function saveToNotion(rate, total) {
       오답문제: wrongNums,
       제출시각: new Date().toLocaleString('ko-KR')
     };
-
-    // GAS는 CORS 응답을 못 보내므로 no-cors 사용 (전송은 정상적으로 됨)
-    await fetch(MAKE_WEBHOOK, {
+ 
+    const res = await fetch(MAKE_WEBHOOK, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
-
-    // no-cors에서는 응답을 읽을 수 없지만 전송은 성공
-    statusEl.className = 'notion-status success';
-    statusText.textContent = '✓ 결과가 저장되었습니다.';
+ 
+    if (res.ok) {
+      statusEl.className = 'notion-status success';
+      statusText.textContent = '✓ 결과가 저장되었습니다.';
+    } else {
+      throw new Error('서버 오류');
+    }
   } catch (e) {
     statusEl.className = 'notion-status error';
-    statusText.textContent = '⚠ 저장 실패 — 네트워크 연결을 확인해주세요.';
+    statusText.textContent = '⚠ 저장 실패 — 잠시 후 다시 시도해주세요.';
     console.error('저장 오류:', e);
   }
 }
-
+ 
 function resetQuiz() {
   selectedUnit = null;
   document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('selected'));
   document.getElementById('start-btn').disabled = true;
   show('select');
 }
-
+ 
 function show(screen) {
   ['select','loading','quiz','result'].forEach(s => {
     document.getElementById(`screen-${s}`).style.display = s === screen ? 'block' : 'none';
   });
 }
-
+ 
 initUnits();
 </script>
 </body>
